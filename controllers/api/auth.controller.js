@@ -34,7 +34,7 @@ class AuthController {
         
         User.findOne({ userId: userData.userId }).then(function (result) {
             if (result === null) {
-                logger.log('debug', 'User does not exist, adding user : ' + userId);
+                logger.log('debug', 'User does not exist, adding user : ' + userData.userId);
 
                 user.save((err, newUser) => {
                     if (err) {
@@ -53,7 +53,7 @@ class AuthController {
                 })
 
             } else {
-                logger.log('warn', 'User Id : ' + userId + ' already exists.');
+                logger.log('warn', 'User Id : ' + userData.userId + ' already exists.');
 
                 userExists = true
                 res.statusCode = 409
